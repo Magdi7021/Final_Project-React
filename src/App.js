@@ -107,10 +107,10 @@ function App() {
         },
       });
       getPoems();
+      toast.success("poem reated successfully")
     } catch (error) {
-      console.log(error.response.data);
       if (error.response) toast.error(error.response.data);
-      else console.log(error.message);
+      else console.log(error);
     }
   };
 
@@ -148,6 +148,7 @@ function App() {
 
   /*Like*/
   const toggleLike = async (poemId) => {
+    try{
     await axios.put(`http://localhost:5000/api/poems/${poemId}/like`, {}, {
       headers: {
         Authorization: localStorage.tokenPoems,
@@ -155,6 +156,13 @@ function App() {
     });
     getPoems();
     getProfile();
+    toast.success("liked")
+
+
+  } catch (error) {
+    if (error.response) toast.error(error.response.data);
+    else console.log(error);
+  }
   };
 
   useEffect(async () => {
