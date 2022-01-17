@@ -42,7 +42,7 @@ const OnePoet = () => {
       <Row className="mt-5">
         <h3>Poems</h3>
         {poet.poems.map(poem => (
-          <PoemItem poemId={poem} key={poem} />
+          <PoemItem poem={poem} key={poem} />
         ))}
       </Row>
     </Container>
